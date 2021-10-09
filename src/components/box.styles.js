@@ -6,7 +6,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
   },
-  boxText: {fontWeight: 'bold', color: '#fff'},
+  boxText: {fontWeight: 'bold'},
+  boxDarkText: {color: '#000'},
+  boxLightText: {color: '#fff'},
 });
 
 export {styles};
