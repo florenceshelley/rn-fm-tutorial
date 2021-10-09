@@ -1,25 +1,37 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, FlatList} from 'react-native';
 
 import Box from './box';
 import {styles} from './app.styles';
 
-const colors = {
-  cyan: '#2aa198',
-  blue: '#268bd2',
-  magenta: '#d33682',
-  orange: '#cb4b16',
-};
+const COLORS = [
+  {colorName: 'Base03', hexCode: '#002b36'},
+  {colorName: 'Base02', hexCode: '#073642'},
+  {colorName: 'Base01', hexCode: '#586e75'},
+  {colorName: 'Base00', hexCode: '#657b83'},
+  {colorName: 'Base0', hexCode: '#839496'},
+  {colorName: 'Base1', hexCode: '#93a1a1'},
+  {colorName: 'Base2', hexCode: '#eee8d5'},
+  {colorName: 'Base3', hexCode: '#fdf6e3'},
+  {colorName: 'Yellow', hexCode: '#b58900'},
+  {colorName: 'Orange', hexCode: '#cb4b16'},
+  {colorName: 'Red', hexCode: '#dc322f'},
+  {colorName: 'Magenta', hexCode: '#d33682'},
+  {colorName: 'Violet', hexCode: '#6c71c4'},
+  {colorName: 'Blue', hexCode: '#268bd2'},
+  {colorName: 'Cyan', hexCode: '#2aa198'},
+  {colorName: 'Green', hexCode: '#859900'},
+];
 
 const App = () => (
   <SafeAreaView>
     <View style={styles.header}>
-      <Text style={styles.headerText}>
-        Here are some boxes of different colours
-      </Text>
-      {Object.entries(colors).map(color => (
-        <Box color={color} key={color[0]} />
-      ))}
+      <FlatList
+        data={COLORS}
+        keyExtractor={({colorName}) => colorName}
+        renderItem={({item}) => <Box color={item} />}
+        ListHeaderComponent={<Text style={styles.headerText}>Solarized</Text>}
+      />
     </View>
   </SafeAreaView>
 );
