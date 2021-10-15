@@ -1,17 +1,23 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {FlatList} from 'react-native';
 
-import {styles} from './home.styles';
+import {COLOR_PALETTES} from '../../constants';
+import Button from '../../components/button/button';
+
+const Item = ({data: {name, colors}, navigation}) => {
+  const options = {paletteName: name, colors};
+  return (
+    <Button
+      text={name}
+      onPress={() => navigation.navigate('ColorPalette', options)}
+    />
+  );
+};
 
 export const Home = ({navigation}) => (
-  <View style={styles.container}>
-    <TouchableOpacity>
-      <Text
-        onPress={() => {
-          navigation.navigate('ColorPalette');
-        }}>
-        Solarized
-      </Text>
-    </TouchableOpacity>
-  </View>
+  <FlatList
+    data={COLOR_PALETTES}
+    keyExtractor={({name}) => name}
+    renderItem={({item}) => <Item data={item} navigation={navigation} />}
+  />
 );
