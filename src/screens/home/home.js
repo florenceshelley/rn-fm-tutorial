@@ -1,8 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
-export const Home = () => (
+export const Home = ({navigation}) => (
   <View>
-    <Text>Hello, world!</Text>
+    <TouchableOpacity>
+      <Text
+        onPress={() => {
+          navigation.navigate('ColorPalette');
+        }}>
+        Solarized
+      </Text>
+    </TouchableOpacity>
   </View>
 );
