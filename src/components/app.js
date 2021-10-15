@@ -19,9 +19,12 @@ const App = () => (
       <Stack.Screen
         name="ColorPalette"
         component={ColorPalette}
-        options={{
-          headerBackTitle: '',
-          headerTitle: 'Colour Palette',
+        options={({route: {params}}) => {
+          const {paletteName} = params;
+          return {
+            headerBackTitle: '',
+            headerTitle: paletteName,
+          };
         }}
       />
     </Stack.Navigator>
