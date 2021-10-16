@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
 
-import Box from '../../components/box/box';
-import {styles} from './color-palette.styles';
+import {Box} from '../../components';
+import styles from './color-palette.styles';
 
 export const ColorPalette = ({route: {params}}) => {
   const {colors} = params;

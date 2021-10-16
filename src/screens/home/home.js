@@ -2,16 +2,15 @@ import React from 'react';
 import {FlatList} from 'react-native';
 
 import {COLOR_PALETTES} from '../../constants';
-import Button from '../../components/button/button';
+import {Button, PreviewItem} from '../../components';
 
-// todo: add palette preview
-const Item = ({data: {name, colors}, navigation}) => {
-  const options = {paletteName: name, colors};
+const ListItem = ({item, navigation}) => {
+  const options = {paletteName: item.name, colors: item.colors};
+  const onPressHandler = () => navigation.navigate('ColorPalette', options);
   return (
-    <Button
-      text={name}
-      onPress={() => navigation.navigate('ColorPalette', options)}
-    />
+    <Button onPress={onPressHandler}>
+      <PreviewItem data={item} navigation={navigation} />
+    </Button>
   );
 };
 
@@ -19,6 +18,6 @@ export const Home = ({navigation}) => (
   <FlatList
     data={COLOR_PALETTES}
     keyExtractor={({name}) => name}
-    renderItem={({item}) => <Item data={item} navigation={navigation} />}
+    renderItem={({item}) => <ListItem item={item} navigation={navigation} />}
   />
 );

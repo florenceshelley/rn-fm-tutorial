@@ -11,4 +11,4 @@ const styles = StyleSheet.create({
   boxLightText: {color: '#fff'},
 });
 
-export {styles};
+export default styles;

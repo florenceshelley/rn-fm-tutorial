@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   header: {
     marginVertical: 5,
     paddingVertical: 10,
@@ -9,3 +9,5 @@ export const styles = StyleSheet.create({
   },
   headerText: {fontWeight: 'bold'},
 });
+
+export default styles;

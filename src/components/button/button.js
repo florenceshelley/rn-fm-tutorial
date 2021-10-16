@@ -1,14 +1,10 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 
-import {styles} from './button.styles';
+import styles from './button.styles';
 
-const Button = ({onPress, text}) => (
-  <View style={styles.container}>
-    <TouchableOpacity>
-      <Text onPress={onPress}>{text}</Text>
-    </TouchableOpacity>
+export const Button = ({onPress, children}) => (
+  <View style={styles.button}>
+    <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>
   </View>
 );
-
-export default Button;

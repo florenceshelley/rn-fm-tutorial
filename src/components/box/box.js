@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import {styles} from './box.styles';
+import styles from './box.styles';
 
-const Box = ({color: {colorName, hexCode}}) => {
+export const Box = ({color: {colorName, hexCode}}) => {
   const background = {backgroundColor: hexCode};
 
   // Determine whether text should display in dark or light depending on bg color
@@ -18,5 +18,3 @@ const Box = ({color: {colorName, hexCode}}) => {
     </View>
   );
 };
-
-export default Box;
