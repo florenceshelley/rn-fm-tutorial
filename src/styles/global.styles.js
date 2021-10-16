@@ -8,3 +8,10 @@ export const SHADOWS = {
   shadowRadius: 2,
   elevation: 2,
 };
+
+export const LIST_CONTAINERS_STYLES = {
+  marginVertical: 5,
+  paddingVertical: 10,
+  paddingHorizontal: 20,
+  backgroundColor: 'white',
+};
