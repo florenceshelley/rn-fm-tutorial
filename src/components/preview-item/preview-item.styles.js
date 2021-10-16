@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {SHADOWS} from '../../styles/global.styles';
+
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 5,
@@ -15,14 +17,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
 
     // box shadows
-    shadowColor: '#bbb',
-    shadowOffset: {
-      width: 1,
-      height: 2,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
+    ...SHADOWS,
   },
 });
 

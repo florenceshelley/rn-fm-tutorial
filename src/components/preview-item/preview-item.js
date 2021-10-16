@@ -17,7 +17,7 @@ export const PreviewItem = ({data: {name, colors}}) => {
         data={previewColors}
         keyExtractor={({colorName}) => colorName}
         renderItem={({item: {hexCode}}) => <PreviewBox color={hexCode} />}
-        horizontal={true}
+        horizontal
       />
     </View>
   );
