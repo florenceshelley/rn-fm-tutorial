@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text} from 'react-native';
 
 import {LIST_CONTAINERS_STYLES} from '../styles';
 import {Button, PreviewItem} from '../components';
@@ -14,9 +14,19 @@ const ListItem = ({item, navigation}) => {
   );
 };
 
+const ListHeader = ({onPress, navigation}) => (
+  <Button onPress={onPress}>
+    <Text>Add a Colour Scheme</Text>
+  </Button>
+);
+
 export const Home = ({navigation}) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [palettes, setPalettes] = useState([]);
+
+  const handleAddColorPress = () => {
+    navigation.navigate('ColorPaletteModal');
+  };
 
   const handleRefresh = useCallback(async () => {
     setIsRefreshing(true);
@@ -49,6 +59,9 @@ export const Home = ({navigation}) => {
       refreshing={isRefreshing}
       onRefresh={handleRefresh}
       renderItem={({item}) => <ListItem item={item} navigation={navigation} />}
+      ListHeaderComponent={
+        <ListHeader onPress={handleAddColorPress} navigation={navigation} />
+      }
     />
   );
 };
