@@ -15,7 +15,17 @@ const ListItem = ({item, navigation}) => {
 };
 
 export const Home = ({navigation}) => {
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [palettes, setPalettes] = useState([]);
+
+  const handleRefresh = useCallback(async () => {
+    setIsRefreshing(true);
+    await fetchColorPalettes();
+
+    // set a timer so that we can see the indicator longer
+    // we can remove the timer function once the network response is bigger
+    setTimeout(() => setIsRefreshing(false), 500);
+  }, [fetchColorPalettes]);
 
   const fetchColorPalettes = useCallback(async () => {
     const API_URL = 'https://color-palette-api.kadikraman.now.sh/palettes';
@@ -36,6 +46,8 @@ export const Home = ({navigation}) => {
       data={palettes}
       style={LIST_CONTAINERS_STYLES}
       keyExtractor={({paletteName}) => paletteName}
+      refreshing={isRefreshing}
+      onRefresh={handleRefresh}
       renderItem={({item}) => <ListItem item={item} navigation={navigation} />}
     />
   );
