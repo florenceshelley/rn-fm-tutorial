@@ -50,7 +50,7 @@ export const ColorPaletteForm = ({navigation}) => {
   return (
     <View>
       <FlatList
-        data={COLORS}
+        data={COLORS.filter(color => color.isShown)}
         keyExtractor={({colorName}) => colorName}
         renderItem={({item}) => (
           <ColorToggle item={item} colors={colors} setColors={setColors} />
