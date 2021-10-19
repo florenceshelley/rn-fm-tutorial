@@ -14,18 +14,17 @@ const App = () => (
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{headerTitle: 'Palette Picker'}}
+        options={({route: {params}}) => ({
+          headerTitle: 'Palette Picker',
+        })}
       />
       <Stack.Screen
         name="ColorPalette"
         component={ColorPalette}
-        options={({route: {params}}) => {
-          const {paletteName} = params;
-          return {
-            headerBackTitle: '',
-            headerTitle: paletteName,
-          };
-        }}
+        options={({route: {params}}) => ({
+          headerBackTitle: '',
+          headerTitle: params.paletteName,
+        })}
       />
       <Stack.Screen
         name="ColorPaletteModal"

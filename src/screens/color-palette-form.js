@@ -40,10 +40,14 @@ export const ColorPaletteForm = ({navigation}) => {
     const options = {paletteName, colors};
     if (paletteName && colors.length >= 3) {
       navigation.navigate('Home', options);
-    } else if (paletteName && colors.length < 3) {
-      console.log('Please select at least three colours.');
     } else if (!paletteName) {
-      console.log('Please enter a paletteName');
+      Alert.alert('Error', 'Please enter a palette name.', <Text>OK</Text>);
+    } else if (paletteName && colors.length < 3) {
+      Alert.alert(
+        'Error',
+        'Please select at least three colours.',
+        <Text>OK</Text>,
+      );
     }
   };
 
