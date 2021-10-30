@@ -37,7 +37,7 @@ export const ColorPaletteForm = ({navigation}) => {
 
   // placeholder, todo: refactor
   const handleSubmit = () => {
-    const options = {paletteName, colors};
+    const options = {newPalette: {paletteName, colors}};
     if (paletteName && colors.length >= 3) {
       navigation.navigate('Home', options);
     } else if (!paletteName) {

@@ -20,7 +20,7 @@ const ListHeader = ({onPress}) => (
   </Button>
 );
 
-export const Home = ({navigation}) => {
+export const Home = ({navigation, route: {params}}) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [palettes, setPalettes] = useState([]);
 
@@ -50,6 +50,12 @@ export const Home = ({navigation}) => {
   useEffect(() => {
     fetchColorPalettes();
   }, [fetchColorPalettes]);
+
+  useEffect(() => {
+    if (params?.newPalette) {
+      setPalettes([params.newPalette, ...palettes]);
+    }
+  }, [params?.newPalette]);
 
   return (
     <FlatList

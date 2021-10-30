@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {SHADOWS} from '../../styles/global.styles';
+import {SHADOWS} from '../../styles';
 
 const styles = StyleSheet.create({
   box: {

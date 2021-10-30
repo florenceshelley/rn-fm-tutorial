@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {SHADOWS} from '../../styles/global.styles';
+import {SHADOWS} from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   boxHeader: {
     marginBottom: 5,
     fontWeight: 'bold',
+    color: '#000',
   },
   previewBox: {
     marginRight: 4,

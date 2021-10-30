@@ -16,6 +16,14 @@ const App = () => (
         component={Home}
         options={({route: {params}}) => ({
           headerTitle: 'Palette Picker',
+          ...(!!params
+            ? {
+                newPalette: {
+                  paletteName: params.paletteName,
+                  colors: params.colors,
+                },
+              }
+            : {}),
         })}
       />
       <Stack.Screen
