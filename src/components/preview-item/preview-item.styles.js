@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
   previewBox: {
     marginRight: 4,
     marginBottom: 4,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    padding: 20,
 
     // box shadows
     ...SHADOWS,

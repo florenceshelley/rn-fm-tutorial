@@ -3,9 +3,9 @@ import {FlatList, Text, View} from 'react-native';
 
 import styles from './preview-item.styles';
 
-const PreviewBox = ({color}) => {
+export const PreviewBox = ({color, style}) => {
   const background = {backgroundColor: color};
-  return <View style={[styles.previewBox, background]} />;
+  return <View style={[styles.previewBox, background, style]} />;
 };
 
 export const PreviewItem = ({data: {paletteName, colors}}) => {

@@ -25,6 +25,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5,
   },
+  colorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  colorPreview: {
+    padding: 10,
+  },
+  colorName: {
+    marginLeft: 10,
+  },
   submitButton: {
     marginTop: 15,
     backgroundColor: '#66cdaa',

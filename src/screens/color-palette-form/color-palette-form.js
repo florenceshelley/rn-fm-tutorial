@@ -2,12 +2,12 @@ import React, {useState, useCallback} from 'react';
 import {Alert, FlatList, Switch, Text, TextInput, View} from 'react-native';
 
 import {COLORS} from '../../colors';
-import {Button} from '../../components';
+import {Button, PreviewBox} from '../../components';
 import styles from './color-palette-form.styles';
 
 const ColorToggle = ({item, colors, setColors}) => {
   const [isItemEnabled, setIsItemEnabled] = useState(false);
-  const {colorName} = item;
+  const {colorName, hexCode} = item;
 
   const handleChange = () => {
     if (isItemEnabled) {
@@ -22,7 +22,10 @@ const ColorToggle = ({item, colors, setColors}) => {
 
   return (
     <View style={styles.colorToggleContainer}>
-      <Text>{colorName}</Text>
+      <View style={styles.colorContainer}>
+        <PreviewBox style={styles.colorPreview} color={hexCode} />
+        <Text style={styles.colorName}>{colorName}</Text>
+      </View>
       <Switch value={isItemEnabled} onChange={handleChange} />
     </View>
   );
