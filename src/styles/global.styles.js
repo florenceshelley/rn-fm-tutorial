@@ -9,6 +9,13 @@ export const SHADOWS = {
   elevation: 2,
 };
 
+export const BORDER_STYLES = {
+  borderWidth: 1,
+  borderRadius: 5,
+  borderColor: '#999',
+  borderStyle: 'solid',
+};
+
 export const LIST_CONTAINERS_STYLES = {
   marginVertical: 5,
   paddingVertical: 10,

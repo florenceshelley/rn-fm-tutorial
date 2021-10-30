@@ -1,8 +1,9 @@
 import React, {useState, useCallback} from 'react';
 import {Alert, FlatList, Switch, Text, TextInput, View} from 'react-native';
 
-import {COLORS} from '../colors';
-import {Button} from '../components';
+import {COLORS} from '../../colors';
+import {Button} from '../../components';
+import styles from './color-palette-form.styles';
 
 const ColorToggle = ({item, colors, setColors}) => {
   const [isItemEnabled, setIsItemEnabled] = useState(false);
@@ -20,7 +21,7 @@ const ColorToggle = ({item, colors, setColors}) => {
   };
 
   return (
-    <View>
+    <View style={styles.colorToggleContainer}>
       <Text>{colorName}</Text>
       <Switch value={isItemEnabled} onChange={handleChange} />
     </View>
@@ -45,7 +46,7 @@ export const ColorPaletteForm = ({navigation}) => {
   }, [paletteName, colors]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={COLORS.filter(color => color.isShown)}
         keyExtractor={({colorName}) => colorName}
@@ -53,15 +54,20 @@ export const ColorPaletteForm = ({navigation}) => {
           <ColorToggle item={item} colors={colors} setColors={setColors} />
         )}
         ListHeaderComponent={() => (
-          <TextInput
-            value={paletteName}
-            placeholder="Palette Name"
-            onChangeText={setPaletteName}
-          />
+          <>
+            <Text style={styles.formLabel}>New palette name:</Text>
+            <TextInput
+              style={styles.paletteNameInput}
+              value={paletteName}
+              placeholder="Palette Name"
+              onChangeText={setPaletteName}
+            />
+            <Text style={styles.formLabel}>Select 5 or more palette colours:</Text>
+          </>
         )}
         ListFooterComponent={() => (
-          <Button onPress={handleSubmit}>
-            <Text>Submit</Text>
+          <Button style={styles.submitButton} onPress={handleSubmit}>
+            <Text style={styles.submitButtonText}>Submit</Text>
           </Button>
         )}
       />

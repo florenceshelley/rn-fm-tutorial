@@ -38,7 +38,11 @@ const App = () => (
       <Stack.Screen
         name="ColorPaletteModal"
         component={ColorPaletteModal}
-        options={{headerLeft: null, presentation: 'modal'}}
+        options={{
+          headerLeft: null,
+          headerTitle: 'Add New Palette',
+          presentation: 'modal'
+        }}
       />
     </Stack.Navigator>
   </NavigationContainer>

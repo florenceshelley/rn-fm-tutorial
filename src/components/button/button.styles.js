@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
     marginVertical: 5,
+  },
+  button: {
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: 'white',
