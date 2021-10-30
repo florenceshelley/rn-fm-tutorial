@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Alert, FlatList, Switch, Text, TextInput, View} from 'react-native';
 
 import {COLORS} from '../colors';
@@ -17,8 +17,6 @@ const ColorToggle = ({item, colors, setColors}) => {
       setColors([...colors, item]);
       setIsItemEnabled(true);
     }
-
-    setIsItemEnabled(!isItemEnabled);
   };
 
   return (
@@ -33,23 +31,18 @@ export const ColorPaletteForm = ({navigation}) => {
   const [paletteName, setPaletteName] = useState('');
   const [colors, setColors] = useState([]);
 
-  const handleInput = value => setPaletteName(value);
-
-  // placeholder, todo: refactor
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
+    const MINIMUM_COLORS = 5;
     const options = {newPalette: {paletteName, colors}};
-    if (paletteName && colors.length >= 3) {
+
+    if (!paletteName) {
+      Alert.alert('Error', 'Please enter a palette name.', 'OK');
+    } else if (paletteName && colors.length < MINIMUM_COLORS) {
+      Alert.alert('Error', `Please select at least ${MINIMUM_COLORS} colours.`, 'OK');
+    } else {
       navigation.navigate('Home', options);
-    } else if (!paletteName) {
-      Alert.alert('Error', 'Please enter a palette name.', <Text>OK</Text>);
-    } else if (paletteName && colors.length < 3) {
-      Alert.alert(
-        'Error',
-        'Please select at least three colours.',
-        <Text>OK</Text>,
-      );
     }
-  };
+  }, [paletteName, colors]);
 
   return (
     <View>
@@ -63,7 +56,7 @@ export const ColorPaletteForm = ({navigation}) => {
           <TextInput
             value={paletteName}
             placeholder="Palette Name"
-            onChangeText={handleInput}
+            onChangeText={setPaletteName}
           />
         )}
         ListFooterComponent={() => (

@@ -30,7 +30,8 @@ const App = () => (
         name="ColorPalette"
         component={ColorPalette}
         options={({route: {params}}) => ({
-          headerBackTitle: '',
+          headerTintColor: '#000',
+          headerBackTitleVisible: false,
           headerTitle: params.paletteName,
         })}
       />
