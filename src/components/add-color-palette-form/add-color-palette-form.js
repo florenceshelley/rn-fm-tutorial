@@ -1,9 +1,11 @@
 import React, {useState, useCallback} from 'react';
-import {Alert, FlatList, Switch, Text, TextInput, View} from 'react-native';
+import {FlatList, Switch, Text, TextInput, View} from 'react-native';
 
 import {COLORS} from '../../colors';
 import {Button, PreviewBox} from '../../components';
-import styles from './color-palette-form.styles';
+import {alert} from '../../utils';
+
+import styles from './add-color-palette-form.styles';
 
 const ColorToggle = ({item, colors, setColors}) => {
   const [isItemEnabled, setIsItemEnabled] = useState(false);
@@ -31,7 +33,7 @@ const ColorToggle = ({item, colors, setColors}) => {
   );
 };
 
-export const ColorPaletteForm = ({navigation}) => {
+export const AddColorPaletteForm = ({navigation}) => {
   const [paletteName, setPaletteName] = useState('');
   const [colors, setColors] = useState([]);
 
@@ -40,9 +42,9 @@ export const ColorPaletteForm = ({navigation}) => {
     const options = {newPalette: {paletteName, colors}};
 
     if (!paletteName) {
-      Alert.alert('Error', 'Please enter a palette name.', 'OK');
+      alert("Please enter a palette name.");
     } else if (paletteName && colors.length < MINIMUM_COLORS) {
-      Alert.alert('Error', `Please select at least ${MINIMUM_COLORS} colours.`, 'OK');
+      alert(`Please select at least ${MINIMUM_COLORS} colours.`);
     } else {
       navigation.navigate('Home', options);
     }

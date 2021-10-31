@@ -4,7 +4,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {ColorPalette, ColorPaletteModal, Home} from './screens';
+import {ColorPalette, AddColorPaletteModal, Home} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -36,8 +36,8 @@ const App = () => (
         })}
       />
       <Stack.Screen
-        name="ColorPaletteModal"
-        component={ColorPaletteModal}
+        name="AddColorPaletteModal"
+        component={AddColorPaletteModal}
         options={{
           headerLeft: null,
           headerTitle: 'Add New Palette',

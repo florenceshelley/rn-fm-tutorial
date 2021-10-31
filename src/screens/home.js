@@ -1,11 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, Text} from 'react-native';
 
-import {LIST_CONTAINERS_STYLES} from '../styles';
 import {Button, PreviewItem} from '../components';
+import {LIST_CONTAINERS_STYLES} from '../styles';
 
 const ListItem = ({item, navigation}) => {
-  const options = {paletteName: item.name, colors: item.colors};
+  const options = {paletteName: item.paletteName, colors: item.colors};
   const onPressHandler = () => navigation.navigate('ColorPalette', options);
   return (
     <Button onPress={onPressHandler}>
@@ -25,7 +25,7 @@ export const Home = ({navigation, route: {params}}) => {
   const [palettes, setPalettes] = useState([]);
 
   const handleAddColorPress = () => {
-    navigation.navigate('ColorPaletteModal');
+    navigation.navigate('AddColorPaletteModal');
   };
 
   const handleRefresh = useCallback(async () => {

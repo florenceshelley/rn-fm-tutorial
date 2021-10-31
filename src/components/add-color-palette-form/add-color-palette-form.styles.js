@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   paletteNameInput: {
-    marginBottom: 30,
+    marginBottom: 20,
     paddingVertical: 10,
     paddingHorizontal: 20,
     ...BORDER_STYLES,

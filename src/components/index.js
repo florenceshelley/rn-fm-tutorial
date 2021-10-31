@@ -1,3 +1,4 @@
-export * from './box/box';
-export * from './button/button';
-export * from './preview-item/preview-item';
+export * from './add-color-palette-form';
+export * from './box';
+export * from './button';
+export * from './preview-item';
