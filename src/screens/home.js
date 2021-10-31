@@ -16,7 +16,7 @@ const ListItem = ({item, navigation}) => {
 
 const ListHeader = ({onPress}) => (
   <Button onPress={onPress}>
-    <Text>Add a Colour Scheme</Text>
+    <Text>Add New Colour Scheme</Text>
   </Button>
 );
 

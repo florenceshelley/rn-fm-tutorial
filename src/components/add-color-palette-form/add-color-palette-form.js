@@ -42,13 +42,13 @@ export const AddColorPaletteForm = ({navigation}) => {
     const options = {newPalette: {paletteName, colors}};
 
     if (!paletteName) {
-      alert("Please enter a palette name.");
+      alert('Please enter a palette name.');
     } else if (paletteName && colors.length < MINIMUM_COLORS) {
       alert(`Please select at least ${MINIMUM_COLORS} colours.`);
     } else {
       navigation.navigate('Home', options);
     }
-  }, [paletteName, colors]);
+  }, [colors, navigation, paletteName]);
 
   return (
     <View style={styles.container}>
@@ -67,11 +67,13 @@ export const AddColorPaletteForm = ({navigation}) => {
               placeholder="Palette Name"
               onChangeText={setPaletteName}
             />
-            <Text style={styles.formLabel}>Select 5 or more palette colours:</Text>
+            <Text style={styles.formLabel}>
+              Select 5 or more palette colours:
+            </Text>
           </>
         )}
         ListFooterComponent={() => (
-          <Button style={styles.submitButton} onPress={handleSubmit}>
+          <Button style={styles.submitButton} type="primary" onPress={handleSubmit}>
             <Text style={styles.submitButtonText}>Submit</Text>
           </Button>
         )}

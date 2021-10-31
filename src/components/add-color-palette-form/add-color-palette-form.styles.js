@@ -38,13 +38,6 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     marginTop: 15,
-    backgroundColor: '#66cdaa',
-    alignItems: 'center',
-
-    ...BORDER_STYLES,
-    // Override global border radius
-    borderColor: '#20b2aa',
-    borderRadius: 25,
   },
   submitButtonText: {
     fontWeight: 'bold',
