@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 
 import {Button, PreviewItem} from '../../components';
-import {LIST_CONTAINERS_STYLES} from '../../styles';
+import {LIST_CONTAINER_STYLES} from '../../styles';
 
 import styles from './home.styles';
 
@@ -55,19 +55,15 @@ export const Home = ({navigation, route: {params}}) => {
 
   useEffect(() => {
     if (params?.newPalette) {
-      setPalettes([params.newPalette, ...palettes]);
+      setPalettes(currentPalettes => [params.newPalette, ...currentPalettes]);
     }
-
-    // Do not include `palettes` in the deps array as this
-    // will cause infinite and unnecessary re-renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.newPalette]);
 
   return (
     <View style={styles.container}>
       <FlatList
         data={palettes}
-        style={LIST_CONTAINERS_STYLES}
+        style={LIST_CONTAINER_STYLES}
         keyExtractor={({paletteName}) => paletteName}
         refreshing={isRefreshing}
         onRefresh={handleRefresh}

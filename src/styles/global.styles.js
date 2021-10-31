@@ -5,7 +5,7 @@ export const BORDER_STYLES = {
   borderStyle: 'solid',
 };
 
-export const LIST_CONTAINERS_STYLES = {
+export const LIST_CONTAINER_STYLES = {
   marginVertical: 5,
   paddingVertical: 10,
   paddingHorizontal: 20,

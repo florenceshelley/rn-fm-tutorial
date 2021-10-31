@@ -20,7 +20,8 @@ A rudimentary application created with the intention of learning and exploring R
 * Convert to TypeScript
 * Add error handling
 * Modify modal
-* ... Moar changes!
+* Clean up some moar
+* ... And moar changes!
 
 ---
 
