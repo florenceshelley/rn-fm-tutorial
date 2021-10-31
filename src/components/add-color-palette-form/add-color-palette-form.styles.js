@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 import {BORDER_STYLES} from '../../styles';
+import {BUTTON_COLORS} from '../button';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     fontWeight: 'bold',
-    color: 'white',
+    color: BUTTON_COLORS.PRIMARY,
   },
 });
 

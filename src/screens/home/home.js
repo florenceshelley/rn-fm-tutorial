@@ -1,8 +1,10 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList, Text} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 
-import {Button, PreviewItem} from '../components';
-import {LIST_CONTAINERS_STYLES} from '../styles';
+import {Button, PreviewItem} from '../../components';
+import {LIST_CONTAINERS_STYLES} from '../../styles';
+
+import styles from './home.styles';
 
 const ListItem = ({item, navigation}) => {
   const options = {paletteName: item.paletteName, colors: item.colors};
@@ -15,8 +17,8 @@ const ListItem = ({item, navigation}) => {
 };
 
 const ListHeader = ({onPress}) => (
-  <Button onPress={onPress}>
-    <Text>Add New Colour Scheme</Text>
+  <Button style={styles.addPaletteButton} type="default" onPress={onPress}>
+    <Text style={styles.addPaletteButtonText}>Add New Colour Scheme</Text>
   </Button>
 );
 
@@ -62,16 +64,20 @@ export const Home = ({navigation, route: {params}}) => {
   }, [params?.newPalette]);
 
   return (
-    <FlatList
-      data={palettes}
-      style={LIST_CONTAINERS_STYLES}
-      keyExtractor={({paletteName}) => paletteName}
-      refreshing={isRefreshing}
-      onRefresh={handleRefresh}
-      renderItem={({item}) => <ListItem item={item} navigation={navigation} />}
-      ListHeaderComponent={
-        <ListHeader onPress={handleAddColorPress} navigation={navigation} />
-      }
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={palettes}
+        style={LIST_CONTAINERS_STYLES}
+        keyExtractor={({paletteName}) => paletteName}
+        refreshing={isRefreshing}
+        onRefresh={handleRefresh}
+        renderItem={({item}) => (
+          <ListItem item={item} navigation={navigation} />
+        )}
+        ListHeaderComponent={
+          <ListHeader onPress={handleAddColorPress} navigation={navigation} />
+        }
+      />
+    </View>
   );
 };
