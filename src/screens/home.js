@@ -55,6 +55,10 @@ export const Home = ({navigation, route: {params}}) => {
     if (params?.newPalette) {
       setPalettes([params.newPalette, ...palettes]);
     }
+
+    // Do not include `palettes` in the deps array as this
+    // will cause infinite and unnecessary re-renders
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.newPalette]);
 
   return (

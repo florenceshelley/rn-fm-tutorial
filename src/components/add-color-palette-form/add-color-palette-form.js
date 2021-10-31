@@ -73,7 +73,10 @@ export const AddColorPaletteForm = ({navigation}) => {
           </>
         )}
         ListFooterComponent={() => (
-          <Button style={styles.submitButton} type="primary" onPress={handleSubmit}>
+          <Button
+            style={styles.submitButton}
+            type="primary"
+            onPress={handleSubmit}>
             <Text style={styles.submitButtonText}>Submit</Text>
           </Button>
         )}

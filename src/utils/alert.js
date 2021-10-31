@@ -1,4 +1,3 @@
-import React from 'react';
 import {Alert} from 'react-native';
 
 const ALERT_TYPES = {
@@ -7,14 +6,11 @@ const ALERT_TYPES = {
 
 export const alert = (message, type = 'MISSING_INPUT') => {
   if (type === ALERT_TYPES.MISSING_INPUT) {
-    return Alert.alert(
-      'Whoops!',
-      message,
-      [
-        {
-          text: 'OK',
-          style: 'default',
-        }
-      ]);
+    return Alert.alert('Whoops!', message, [
+      {
+        text: 'OK',
+        style: 'default',
+      },
+    ]);
   }
 };

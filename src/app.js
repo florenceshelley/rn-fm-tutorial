@@ -41,7 +41,7 @@ const App = () => (
         options={{
           headerLeft: null,
           headerTitle: 'Add New Palette',
-          presentation: 'modal'
+          presentation: 'modal',
         }}
       />
     </Stack.Navigator>
