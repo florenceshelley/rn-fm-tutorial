@@ -2,6 +2,8 @@
 
 A rudimentary application created with the intention of learning and exploring React Native.
 
+<img src="github/assets/colour-themes-demo.gif" alt="Colour Themes Demo" width="250" />
+
 ## Instructions
 
 *TODO: update this section*
