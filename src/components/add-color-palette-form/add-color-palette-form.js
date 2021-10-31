@@ -11,7 +11,7 @@ const ColorToggle = ({item, colors, setColors}) => {
   const [isItemEnabled, setIsItemEnabled] = useState(false);
   const {colorName, hexCode} = item;
 
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     if (isItemEnabled) {
       const newColors = colors.filter(color => color !== item);
       setColors(newColors);
@@ -20,7 +20,7 @@ const ColorToggle = ({item, colors, setColors}) => {
       setColors([...colors, item]);
       setIsItemEnabled(true);
     }
-  };
+  }, [colors, isItemEnabled, item, setColors]);
 
   return (
     <View style={styles.colorToggleContainer}>
