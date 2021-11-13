@@ -6,6 +6,8 @@ import {LIST_CONTAINER_STYLES} from '../../styles';
 
 import styles from './home.styles';
 
+export const API_URL = 'https://color-palette-api.kadikraman.now.sh/palettes';
+
 const ListItem = ({item, navigation}) => {
   const options = {paletteName: item.paletteName, colors: item.colors};
   const onPressHandler = () => navigation.navigate('ColorPalette', options);
@@ -40,7 +42,6 @@ export const Home = ({navigation, route: {params}}) => {
   }, [fetchColorPalettes]);
 
   const fetchColorPalettes = useCallback(async () => {
-    const API_URL = 'https://color-palette-api.kadikraman.now.sh/palettes';
     const result = await fetch(API_URL);
 
     if (result.ok) {
@@ -64,6 +65,7 @@ export const Home = ({navigation, route: {params}}) => {
       <FlatList
         data={palettes}
         style={LIST_CONTAINER_STYLES}
+        accessibilityLabel="colour-palettes"
         keyExtractor={({paletteName}) => paletteName}
         refreshing={isRefreshing}
         onRefresh={handleRefresh}

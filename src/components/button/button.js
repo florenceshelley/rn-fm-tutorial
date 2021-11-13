@@ -18,7 +18,10 @@ const getButtonType = type => {
 };
 
 export const Button = ({onPress, style, type, children}) => (
-  <TouchableOpacity style={styles.container} onPress={onPress}>
+  <TouchableOpacity
+    accessibilityRole="button"
+    style={styles.container}
+    onPress={onPress}>
     <View style={[styles.button, getButtonType(type), style]}>{children}</View>
   </TouchableOpacity>
 );
