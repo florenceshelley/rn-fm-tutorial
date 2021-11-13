@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 
-import {Button, PreviewItem} from '../../components';
+import {useFetch, useRefresh} from '../../hooks';
+import {Button, LoadingIndicator, PreviewItem} from '../../components';
 import {LIST_CONTAINER_STYLES} from '../../styles';
 
 import styles from './home.styles';
@@ -25,34 +26,23 @@ const ListHeader = ({onPress}) => (
 );
 
 export const Home = ({navigation, route: {params}}) => {
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const [palettes, setPalettes] = useState([]);
+  const {isRefreshing, refresh} = useRefresh(API_URL);
+  const {loading: fetchLoading, data: fetchData} = useFetch(API_URL);
 
   const handleAddColorPress = () => {
     navigation.navigate('AddColorPaletteModal');
   };
 
   const handleRefresh = useCallback(async () => {
-    setIsRefreshing(true);
-    await fetchColorPalettes();
-
-    // set a timer so that we can see the indicator longer
-    // we can remove the timer function once the network response is bigger
-    setTimeout(() => setIsRefreshing(false), 500);
-  }, [fetchColorPalettes]);
-
-  const fetchColorPalettes = useCallback(async () => {
-    const result = await fetch(API_URL);
-
-    if (result.ok) {
-      const paletteJson = await result.json();
-      setPalettes(paletteJson);
-    }
-  }, []);
+    await refresh();
+  });
 
   useEffect(() => {
-    fetchColorPalettes();
-  }, [fetchColorPalettes]);
+    if (!fetchLoading) {
+      setPalettes(fetchData);
+    }
+  }, [fetchLoading, fetchData]);
 
   useEffect(() => {
     if (params?.newPalette) {
@@ -62,20 +52,24 @@ export const Home = ({navigation, route: {params}}) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={palettes}
-        style={LIST_CONTAINER_STYLES}
-        accessibilityLabel="colour-palettes"
-        keyExtractor={({paletteName}) => paletteName}
-        refreshing={isRefreshing}
-        onRefresh={handleRefresh}
-        renderItem={({item}) => (
-          <ListItem item={item} navigation={navigation} />
-        )}
-        ListHeaderComponent={
-          <ListHeader onPress={handleAddColorPress} navigation={navigation} />
-        }
-      />
+      {fetchLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <FlatList
+          data={palettes}
+          style={LIST_CONTAINER_STYLES}
+          accessibilityLabel="colour-palettes"
+          keyExtractor={({paletteName}) => paletteName}
+          refreshing={isRefreshing}
+          onRefresh={handleRefresh}
+          renderItem={({item}) => (
+            <ListItem item={item} navigation={navigation} />
+          )}
+          ListHeaderComponent={
+            <ListHeader onPress={handleAddColorPress} navigation={navigation} />
+          }
+        />
+      )}
     </View>
   );
 };
